@@ -28,13 +28,13 @@ from wallaby import set_servo_position
 # Drive Constants
 INCHES_TO_TICKS = 208  # 169   #205 - 161     #156#127#50 cm #265
 WHEEL_DISTANCE = 4.75  # 205 - 4.25  # Distance between the two wheels
-ADJUST = 1.025  # adjust left wheel counter to fix drift
+ADJUST = 1.0  # adjust left wheel counter to fix drift
 
 if isClone:
     # Drive Constants
     INCHES_TO_TICKS = 213  # 169   #205 - 161     #156#127#50 cm #265
     WHEEL_DISTANCE = 4.75  # 205 - 4.25  # Distance between the two wheels
-    ADJUST = 1.07  # adjust left wheel counter to fix drift
+    ADJUST = 1.025  # adjust left wheel counter to fix drift
 
 
 # Motor Control #
@@ -253,3 +253,13 @@ def pivot_left(deg, speed):  # Pivots by moving the left wheel.
     while _left_ticks() <= ticks:
         pass
     freeze_motors()
+
+def line_follow_forward(distance):
+    _clear_ticks()
+    ticks = abs(INCHES_TO_TICKS * distance)
+    while _right_ticks() <= ticks:
+        if analog(0) < 2000:
+            _drive(30, 40)
+        else:
+            _drive(40, 30)
+    _drive(0,0)

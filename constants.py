@@ -22,8 +22,24 @@ isClone = w.digital(CLONE_SWITCH)
 servoArm = 0
 servoClaw = 1
 
-armUp = 2000
-armDown = 435
+armUp = 1500
+armDown = 100
 
-clawOpen = 152
-clawClosed = 2047
+clawOpen = 0
+clawClosed = 1550
+
+if isClone:
+    # Servos
+    servoArm = 0
+    servoClaw = 1
+
+    armUp = 2000
+    armDown = 435
+
+    clawOpen = 152
+    clawClosed = 2047
+
+
+
+# Tophat
+TOPHAT = 0
