@@ -6,9 +6,7 @@ import utils as u
 def main():
     act.init()
     act.getOutAndGrabPoms()
-    act.test()
-    u.DEBUGwithWait()
-
+    #act.test()
     act.dropPomsInFurrow()
     act.getToMiddle()
     u.DEBUGwithWait()

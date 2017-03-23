@@ -79,6 +79,9 @@ def move_servo_timed(servo, endPos, time):  # Moves a servo over a specific time
     move_servo(servo, endPos, speed)
 
 
+
+
+
 # Loop break timers #
 
 time = 0  # This represents how long to wait before breaking a loop.
@@ -91,3 +94,4 @@ def setWait(DELAY):  # Sets wait time in seconds before breaking a loop.
 
 def getWait():  # Used to break a loop after using "setWait". An example would be: setWiat(10) | while true and getWait(): do something().
     return seconds() < time
+

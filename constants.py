@@ -23,10 +23,10 @@ servoArm = 0
 servoClaw = 1
 
 armUp = 1500
-armDown = 100
+armDown = 320 #100
 
 clawOpen = 0
-clawClosed = 1550
+clawClosed = 1980 #1550
 
 if isClone:
     # Servos
@@ -38,6 +38,7 @@ if isClone:
 
     clawOpen = 152
     clawClosed = 2047
+
 
 
 
