@@ -17,17 +17,17 @@ def init():
     u.waitForButton()
 
 def test():
-    x.drive_speed(50, 50)
+    x.drive_speed(40,100)
 
 def getOutAndGrabPoms():
     x.drive_speed(6, 75)
-    u.move_servo(c.servoClaw, c.clawClosed)
+    u.move_servo(c.servoClaw, c.clawClosed, 20)
     msleep(1000)
     u.move_servo(c.servoArm, c.armUp)
 
 def dropPomsInFurrow():
-    x.pivot_right(9, 50) #angle was 6
     x.drive_speed(12, 65)
+    x.pivot_right(11, 50)  # angle was 6
     x.drive_speed(6, 35)
     u.move_servo(c.servoArm, c.armDown)
     #x.drive_speed(4, 100)
@@ -42,10 +42,10 @@ def getToMiddle():
     x.drive_speed(-4, 50)
     x.drive_speed(30, 100)
     x.rotate(90, 50)
-    x.drive_speed(14, 100)
-    x.drive_timed(100, 10, 1.4)
+    x.drive_condition(100,100,u.seeLine,False)
+    x.drive_speed(-1,100)
+    x.rotate(-40,100)
     lineFollowRightTimed(10)
-
 
     #x.drive_speed(15, 100)
     #x.drive_speed(5, 50)
@@ -53,7 +53,7 @@ def getToMiddle():
 def lineFollowRightTimed(time):
     u.setWait(time)
     while u.getWait():
-        if analog(5) < 300:
-            x._drive(-100, 100)
-        else: analog(5) > 2900
-        x._drive(100, -100)
+        if analog(c.TOPHAT) < 300:
+            x._drive(20, 60)
+        elif analog(c.TOPHAT) > 2400:
+            x._drive(60, 20)

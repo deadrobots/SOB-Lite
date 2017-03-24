@@ -16,6 +16,7 @@ from wallaby import seconds
 from wallaby import freeze
 from wallaby import set_servo_position
 from wallaby import get_servo_position
+from wallaby import analog
 import drive as d
 import wallaby as w
 
@@ -78,10 +79,6 @@ def move_servo_timed(servo, endPos, time):  # Moves a servo over a specific time
         speed = abs((DELAY * (get_servo_position(servo) - endPos)) / time)
     move_servo(servo, endPos, speed)
 
-
-
-
-
 # Loop break timers #
 
 time = 0  # This represents how long to wait before breaking a loop.
@@ -95,3 +92,5 @@ def setWait(DELAY):  # Sets wait time in seconds before breaking a loop.
 def getWait():  # Used to break a loop after using "setWait". An example would be: setWiat(10) | while true and getWait(): do something().
     return seconds() < time
 
+def seeLine():
+    return analog(0) > 2400

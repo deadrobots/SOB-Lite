@@ -16,6 +16,10 @@ RMOTOR = 3
 CLONE_SWITCH = 9
 RIGHT_BUTTON = 13
 
+# Analog ports
+TOPHAT = 0
+ET = 5
+
 isClone = w.digital(CLONE_SWITCH)
 
 # Servos
@@ -23,7 +27,7 @@ servoArm = 0
 servoClaw = 1
 
 armUp = 1500
-armDown = 320 #100
+armDown = 25
 
 clawOpen = 0
 clawClosed = 1980 #1550
@@ -40,7 +44,3 @@ if isClone:
     clawClosed = 2047
 
 
-
-
-# Tophat
-TOPHAT = 0
