@@ -27,6 +27,7 @@ servoArm = 0
 servoClaw = 1
 
 armUp = 1500
+armDownMid = 100
 armDown = 25
 
 clawOpen = 0
@@ -38,7 +39,8 @@ if isClone:
     servoClaw = 1
 
     armUp = 2000
-    armDown = 435
+    armDownMid = 500
+    armDown = 300
 
     clawOpen = 152
     clawClosed = 2047

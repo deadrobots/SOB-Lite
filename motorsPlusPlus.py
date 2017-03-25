@@ -15,6 +15,7 @@ from constants import RMOTOR
 
 from math import pi
 
+from wallaby import analog
 from wallaby import ao
 from wallaby import clear_motor_position_counter
 from wallaby import freeze
@@ -34,7 +35,7 @@ if isClone:
     # Drive Constants
     INCHES_TO_TICKS = 213  # 169   #205 - 161     #156#127#50 cm #265
     WHEEL_DISTANCE = 4.75  # 205 - 4.25  # Distance between the two wheels
-    ADJUST = 0.914    #1.03  # adjust left wheel counter to fix drift
+    ADJUST = 1.075    #1.03  # adjust left wheel counter to fix drift
 
 
 # Motor Control #
@@ -111,7 +112,7 @@ def arc_radius(angle, turnRadius, speed):  # Turns the robot "angle" degrees by 
     smallCircSeg = (angle / 360.0) * smallCircum
     largeCircSeg = (angle / 360.0) * largeCircum
     if turnRadius < 0:    msleep(300)
-    x.pivot_right(3, -5)
+    pivot_right(3, -5)
     speed = -speed
     _clear_ticks()
     smallTicks = abs(INCHES_TO_TICKS * smallCircSeg)
@@ -186,7 +187,8 @@ def drive_condition(lmotor, rmotor, testFunction, state=True):
     print "driving under condition"
     _clear_ticks()
     if lmotor == 0 or rmotor == 0:
-        print "please use pivot instead!"
+        print "this won't work! please use pivot_right_condition or pivot_left_condition instead!"
+        exit(0)
 
     elif abs(rmotor) <= abs(lmotor):
         mod = rmotor / (lmotor * 1.0)
@@ -206,6 +208,17 @@ def drive_condition(lmotor, rmotor, testFunction, state=True):
     freeze_motors()
     print get_motor_position_counter(RMOTOR)
 
+def pivot_right_condition(speed, testFunction, state=True):  # Pivots by moving the right wheel.
+    _drive(0, speed)
+    while testFunction() is state:
+        pass
+    freeze_motors()
+
+def pivot_left_condition(speed, testFunction, state=True):  # Pivots by moving the left wheel.
+    _drive(speed, 0)
+    while testFunction() is state:
+        pass
+    freeze_motors()
 
 def rotate(deg, speed):  # Rotates by using both wheels equally.
     if deg < 0:

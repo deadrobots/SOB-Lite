@@ -4,13 +4,13 @@ import utils as u
 
 
 def main():
+    # act.test()
     act.init()
     act.getOutAndGrabPoms()
     act.dropPomsInFurrow()
     act.getToMiddle()
     act.exitMiddle()
-    u.DEBUGwithWait()
-
+    act.dropSecondPoms()
 
 if __name__ == "__main__":
     import os
