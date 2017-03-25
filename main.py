@@ -8,7 +8,9 @@ def main():
     act.getOutAndGrabPoms()
     act.dropPomsInFurrow()
     act.getToMiddle()
+    act.exitMiddle()
     u.DEBUGwithWait()
+
 
 if __name__ == "__main__":
     import os
