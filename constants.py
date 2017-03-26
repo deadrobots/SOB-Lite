@@ -19,6 +19,7 @@ RIGHT_BUTTON = 13
 # Analog ports
 TOPHAT = 0
 ET = 5
+STARTLIGHT = 4
 
 isClone = w.digital(CLONE_SWITCH)
 
@@ -27,6 +28,8 @@ servoArm = 0
 servoClaw = 1
 
 armUp = 1500
+armMid = 500
+armFurrow = 200
 armDownMid = 100
 armDown = 25
 

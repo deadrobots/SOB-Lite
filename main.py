@@ -11,6 +11,8 @@ def main():
     act.getToMiddle()
     act.exitMiddle()
     act.dropSecondPoms()
+    act.goToBarn()
+    u.DEBUGwithWait()
 
 if __name__ == "__main__":
     import os
