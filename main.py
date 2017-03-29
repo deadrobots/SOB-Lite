@@ -4,7 +4,7 @@ import utils as u
 
 
 def main():
-    # act.test()
+    #act.test()
     act.init()
     act.getOutAndGrabPoms()
     act.dropPomsInFurrow()
