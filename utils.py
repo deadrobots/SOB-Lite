@@ -102,23 +102,21 @@ def wait4light():
         pass
     wait4(c.STARTLIGHT)
 
-from wallaby import a_button_clicked, b_button_clicked
+from wallaby import left_button, right_button
 
 def calibrate(port):
-    print "Press A button with light on"
-    while not a_button_clicked():
-        if digital(13):
-            DEBUG()
+    print "Press LEFT button with light on"
+    while not left_button():
+        pass
     lightOn = analog(port)
     print "On value =", lightOn
     if lightOn > 200:
         print "Bad calibration"
         return False
-
-    print "Press B button with light off"
-    while not b_button_clicked():
-        if digital(13):
-            DEBUG()
+    msleep(1000)
+    print "Press RIGHT button with light off"
+    while not right_button():
+        pass
     lightOff = analog(port)
     print "Off value =", lightOff
     if lightOff < 3000:
